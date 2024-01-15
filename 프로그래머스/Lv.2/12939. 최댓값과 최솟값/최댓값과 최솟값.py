@@ -1,5 +1,3 @@
 def solution(s):
-    answer = []
-    for i in s.split(' '):
-        answer.append(int(i))
+    answer = list(map(int, s.split(' ')))
     return str(min(answer)) + ' ' + str(max(answer))
