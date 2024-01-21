@@ -1,7 +1,5 @@
 def solution(a, b, flag):
-    answer = 0
     if flag == 1:
-        answer = a+b
+        return a+b
     else :
-        answer = a-b
-    return answer
+        return a-b
