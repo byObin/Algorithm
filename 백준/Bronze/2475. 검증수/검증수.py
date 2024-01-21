@@ -1,7 +1,1 @@
-num = list(map(int,input().split()))
-sum = 0
-
-for i in num:
-    sum += i*i
-
-print(sum%10)
+print(sum(int(i)**2 for i in input().split())%10)
