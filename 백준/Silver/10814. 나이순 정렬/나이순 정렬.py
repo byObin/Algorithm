@@ -1,14 +1,7 @@
 import sys
 
-members = []
+members = sys.stdin.readlines()[1:]
 
-n = int(sys.stdin.readline())
+members.sort(key = lambda x: int(x.split()[0]))
 
-for i in range(n):
-    age, name = sys.stdin.readline().split()
-    members.append((i, int(age), name))
-
-sorted_mem = sorted(members, key=lambda x: (x[1], x[0]))
-
-for j in sorted_mem:
-    print(j[1], j[2])
+print("".join(members)) 
