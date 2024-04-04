@@ -1,29 +1,28 @@
+import sys
+
+input = sys.stdin.readline
 
 while True:
-    stack = []
-   
-    line = input()
-
+    line = input().rstrip()
     if line == '.':
-        break    
+        break
+    if line.count('(') != line.count(')') or line.count('[') != line.count(']'):
+        print('no')
+        continue
     
+    b = ''
+
     for i in line:
-        if i == '(' or i == '[':
-            stack.append(i)
-        elif i == ')':
-            if len(stack) > 0 and stack[-1] == '(':
-                    stack.pop()
-            else:
-                stack.append(i)
-                break
-        elif i == ']':
-            if len(stack) > 0 and stack[-1] == '[':
-                stack.pop()
-            else:
-                stack.append(i) 
-                break
+        if i in '()[]':
+            b += i
     
-    if len(stack) == 0:
+    while '()' in b or '[]' in b:
+        if '()' in b:
+            b = b.replace('()', '')
+        if '[]' in b:
+            b = b.replace('[]', '')
+    
+    if b == '':
         print('yes')
     else:
         print('no')
