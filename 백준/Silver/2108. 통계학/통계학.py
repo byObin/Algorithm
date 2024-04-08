@@ -1,34 +1,27 @@
 import sys
+from collections import Counter
 
-input = sys.stdin.readline
-
+input = sys.stdin.readline  
 n = int(input())
-
 nums = [int(input()) for _ in range(n)]
 
 nums.sort()
 
-print(round(sum(nums)/n))
-print(nums[n // 2])
+mean = round(sum(nums) / n)
 
-dic=dict()
-for i in nums:
-    if i in dic:
-        dic[i]+=1
-    else:
-        dic[i]=1
-        
-mx=max(dic.values())
+median = nums[n // 2]
 
-mx_dic=[]
+frequencies = Counter(nums)
+most_common = frequencies.most_common()
+max_freq = most_common[0][1]
 
-for i in dic:
-    if mx==dic[i]:
-        mx_dic.append(i)
+modes = [val for val, freq in most_common if freq == max_freq]
 
-if len(mx_dic)>1:
-    print(mx_dic[1])
-else:
-    print(mx_dic[0])
+mode = modes[0] if len(modes) == 1 else modes[1]
 
-print(max(nums) - min(nums))
+range_val = nums[-1] - nums[0]
+
+print(mean)
+print(median)
+print(mode)
+print(range_val)
