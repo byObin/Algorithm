@@ -4,9 +4,9 @@ input = sys.stdin.readline
 
 s1 = list(input().rstrip())
 s2 = []
-m = int(input())
+n = int(input())
 
-for _ in range(m):
+for _ in range(n):
     op = input().split()
     if op[0] == 'L':
         if s1:
@@ -22,4 +22,3 @@ for _ in range(m):
 
 s1.extend(reversed(s2))
 print(''.join(s1))
-
