@@ -12,7 +12,8 @@ for i in range(1, n+1):
 index = n+2
 results = []
 for _ in range(m):
-    a, b = map(int, data[index:index+2])
+    a = int(data[index])
+    b = int(data[index + 1])
     index += 2
     results.append(sums[b] - sums[a-1])
 
