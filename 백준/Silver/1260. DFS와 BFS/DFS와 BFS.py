@@ -1,4 +1,7 @@
 from collections import deque
+import sys
+
+input = sys.stdin.readline
 
 def recursive_dfs(graph, v, visited, result):
     visited[v] = True
@@ -30,7 +33,7 @@ for _ in range(m):
     graph[s].append(e)
     graph[e].append(s)
 
-visited_d = [False] * (n+1)
+visited_d= [False] * (n+1)
 visited_b = [False] * (n+1)
 result = []
 
