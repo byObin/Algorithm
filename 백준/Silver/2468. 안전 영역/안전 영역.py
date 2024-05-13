@@ -6,15 +6,19 @@ input = sys.stdin.readline
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
 
+# dfs_stack
 def dfs(x, y, h, visited):
     visited[x][y] = True
+    stack = [(x, y)]
+    while stack:
+        cx, cy = stack.pop()
+        for m in range(4):
+            nx = cx + dx[m]
+            ny = cy + dy[m]
 
-    for m in range(4):
-        nx = x + dx[m]
-        ny = y + dy[m]
-
-        if 0 <= nx < n and 0 <= ny < n and not visited[nx][ny] and ground[nx][ny] > h:
-            dfs(nx, ny, h, visited)
+            if 0 <= nx < n and 0 <= ny < n and not visited[nx][ny] and ground[nx][ny] > h:
+                visited[nx][ny] = True
+                stack.append((nx, ny))
 
 n = int(input())
 ground = [list(map(int, input().split())) for _ in range(n)]
