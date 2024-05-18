@@ -25,12 +25,5 @@ for i in range(m):
                 w.append(dfs(i, j))
             else:
                 b.append(dfs(i, j))
-w_sum = 0
-for k in w:
-    w_sum += k ** 2
 
-b_sum = 0
-for l in b:
-    b_sum += l ** 2
-
-print(w_sum, b_sum)
+print(sum(x ** 2 for x in w), sum(y**2 for y in b))
