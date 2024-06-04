@@ -1,17 +1,9 @@
 n = int(input())
-dic = dict()
-num_cards = list(map(int, input().split()))
-for i in num_cards:
-    dic[i] = 0
-    
+num_cards = set(map(int, input().split()))
+
 m = int(input())
 have_cards = list(map(int, input().split()))
-result = []
 
-for j in have_cards:
-    if dic.get(j) == 0:
-        result.append(1)
-    else:
-        result.append(0)
+result = [1 if card in num_cards else 0 for card in have_cards]
 
-print(' '.join(str(i) for i in result))
+print(' '.join(map(str, result)))
