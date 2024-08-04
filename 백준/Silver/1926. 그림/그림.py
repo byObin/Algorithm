@@ -1,23 +1,23 @@
 import sys
-from collections import deque
 
 input = sys.stdin.readline
 
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
 
-def bfs(x, y):
-    q = deque([(x, y)])
+# 스택을 이용한 DFS
+def dfs(x, y):
+    s = [(x, y)]
     visited[x][y] = True
     size = 1
 
-    while q:
-        x, y = q.popleft()
+    while s:
+        x, y = s.pop()
         for i in range(4):
             nx, ny = x + dx[i], y + dy[i]
             if 0 <= nx < n and 0 <= ny <m and graph[nx][ny] == 1 and not visited[nx][ny]:
                 visited[nx][ny] = True
-                q.append((nx, ny))
+                s.append((nx, ny))
                 size += 1
     return size
 
@@ -33,7 +33,7 @@ def main():
         for j in range(m):
             if graph[i][j] == 1 and not visited[i][j]:
                 cnt += 1
-                max_size = max(max_size, bfs(i, j))
+                max_size = max(max_size, dfs(i, j))
 
     print(cnt)
     print(max_size)
